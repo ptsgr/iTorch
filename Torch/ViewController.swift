@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class ViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class ViewController: UIViewController {
     var powerOn = UIImage(named: "TorchOn")
     var powerOff = UIImage(named: "TorchOff")
     var status = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -26,11 +28,30 @@ class ViewController: UIViewController {
     }
     
     func setPowerImage(status: Bool){
-        if(status){
-            self.PowerButton.setImage(powerOn, for: UIControl.State.normal)
-        } else {
-            self.PowerButton.setImage(powerOff, for: UIControl.State.normal)
+
+        guard let Device = AVCaptureDevice.default(for: AVMediaType.video) else { return }
+        guard Device.hasTorch else { return }
+        
+        do {
+            try Device.lockForConfiguration()
+            if(status){
+                self.PowerButton.setImage(powerOn, for: UIControl.State.normal)
+                do {
+                    try Device.setTorchModeOn(level: 1.0)
+                } catch {
+                    print(error)
+                }
+            } else {
+                if (Device.torchMode == AVCaptureDevice.TorchMode.on) {
+                    Device.torchMode = AVCaptureDevice.TorchMode.off
+                }
+                self.PowerButton.setImage(powerOff, for: UIControl.State.normal)
+            }
+            Device.unlockForConfiguration()
+        } catch {
+            print(error)
         }
     }
+    
 }
 

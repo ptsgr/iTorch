@@ -16,11 +16,10 @@
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Torch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZw-D6-ItK">
-                                <rect key="frame" x="132" y="373" width="150" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZw-D6-ItK">
+                                <rect key="frame" x="140.8426187259056" y="387.56877377004912" width="128.99999999999952" height="125.99999999999989"/>
                                 <state key="normal" image="TorchOff"/>
                                 <connections>
                                     <action selector="PushPowerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="v6I-L1-9sv"/>
@@ -28,6 +27,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DZw-D6-ItK" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ENM-bb-45u"/>
+                            <constraint firstItem="DZw-D6-ItK" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mVx-eM-0dn"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
